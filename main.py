@@ -1,8 +1,8 @@
-import utils
+from onp.utils import func as hello
 
 
 def main():
-    utils.func()
+    hello()
 
 
 if __name__ == '__main__':
