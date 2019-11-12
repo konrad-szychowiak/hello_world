@@ -2,7 +2,7 @@ from onp.utils import func as hello
 
 
 def main():
-    print("Hell-o windows")
+    print("Hell-o linux")
     hello()
 
 
