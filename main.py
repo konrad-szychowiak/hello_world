@@ -1,9 +1,9 @@
-from onp.utils import func as hello
+from onp.utils import func
 
 
 def main():
     print("Hell-o linux")
-    hello()
+    func()
 
 
 if __name__ == '__main__':
