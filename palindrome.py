@@ -4,6 +4,9 @@ def is_palindrome(text: str) -> bool:
     """
     return text == text[::-1]
 
+data=input().lower()
+out=True
+
 if is_palindrome(data):
     out = True
 
@@ -13,13 +16,12 @@ else:
             out = True
             break
             
-    if not out:
-        for i in range(len(data)):
-            for j in range(len(data)-i):
-                if is_palindrome(data[:i] + data[i+1:i+j] + data[i+j+1:]):
-                    out = True 
-                    break
-                    break
+    for i in range(len(data)):
+        for j in range(len(data)-i):
+            if is_palindrome(data[:i] + data[i+1:i+j] + data[i+j+1:]):
+                out = True 
+                break
+                break
         
 
 print("YES" if out else "NO")
