@@ -5,4 +5,4 @@ compiler:
 jobs:
   include:
     - stage: test
-      script: clang++ tmp.c && ./a.out
+      script: ls -l && clang++ test.c && ./a.out
