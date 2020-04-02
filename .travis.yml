@@ -1,0 +1,8 @@
+language: cpp
+compiler:
+  - clang
+  
+jobs:
+  include:
+    - stage: test
+      script: clang++ tmp.c && ./a.out
