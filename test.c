@@ -10,7 +10,6 @@ int main(int argc, char const *argv[]) {
   for (int i = 0; i < INT_MAX; i++)
   {
     foo += pow(double(-1), double(i)) / (1+2*i);
-    printf("%.50f\n", foo);
   }
 
   printf("%.50f\n", foo);
