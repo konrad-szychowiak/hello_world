@@ -43,13 +43,13 @@ def tester(constructor):
         loggedMemo.append(str(logged - sprouted))
         balancedMemo.append(str(balanced - logged))
 
-    print("tested N;", '; '.join([str(x) for x in testRanges]))
+    print("elems;", '; '.join([str(x) for x in testRanges]))
     print("create;", '; '.join(createdMemo))
-    print("min finding;", '; '.join(sproutedMemo))
-    print("postorder display;", '; '.join(loggedMemo))
-    print("balancing;", '; '.join(balancedMemo))
+    print("minimum;", '; '.join(sproutedMemo))
+    print("in-order;", '; '.join(loggedMemo))
+    print("balance;", '; '.join(balancedMemo))
 
 
 tester(
-    constructor=BSTTree
+    constructor=AVLTree
 )
