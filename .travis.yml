@@ -1,8 +1,7 @@
-language: cpp
-compiler:
-  - clang
-  
-jobs:
-  include:
-    - stage: test
-      script: ls -l && clang++ test.c && ./a.out
+language: python
+python:
+  - "3.6" # current default Python on Travis CI
+  - "3.7"
+  - "3.8"
+script:
+  - python test.py
