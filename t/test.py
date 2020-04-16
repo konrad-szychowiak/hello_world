@@ -3,7 +3,7 @@ import time
 from ngen import *
 from tree import BSTTree, AVLTree
 
-__import__('sys').setrecursionlimit(20000)
+__import__('sys').setrecursionlimit(50000)
 
 
 def tester(constructor):
@@ -11,7 +11,7 @@ def tester(constructor):
     createdMemo = []
     sproutedMemo = []
     balancedMemo = []
-    testRanges = [10, 100, 250, 500, 750, 1000, 2500, 5000, 7500, 10000, 20000]
+    testRanges = [10, 100, 250, 500, 750, 1000, 2500, 5000, 7500, 10000]
     # testRanges = [10, 1000, 10000, 100000, 125000,
     #               250000, 375000, 500000, 750000, 1000000]
 
