@@ -4,4 +4,4 @@ python:
   - "3.7"
   - "3.8"
 script:
-  - python t/test.py | tr ',' '.'
+  - python g/test.py | tr ',' '.'
