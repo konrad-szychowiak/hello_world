@@ -1,4 +1,5 @@
 from copy import deepcopy
+
 from ggen import Generator
 
 
@@ -61,6 +62,7 @@ def przegladanie_dfs(successors):
     res = []
     for i in range(len(successors)):
         res = dfs(successors[i][0], res, successors)
+    res = " -> ".join(list(map(str, res)))
     return res
 
 
@@ -88,42 +90,12 @@ def przegladanie_bfs(successors):
         if nastepniki not in res:
             res.append(nastepniki)
             res = bfs(nastepniki, res, successors)
+    res = " -> ".join(list(map(str, res)))
     return res
 
 
-def dfs_sort_matrix(matrix):
-    res = []
-    # for i in range(len(matrix)):
-    #     if matrix[i][i] == 0:
-    #         matrix[i][i] = 1  # "szary"
-    #     if
-
-
-# FUNCS
-def next_by_matrix(matrix, i):
-    successors = []
-    for j in range(len(matrix[i])):
-        if matrix[i][j] == 1:
-            successors.append(j + 1)
-    return successors
-
-
-def next_by_list(list, i):
-    return list[i][1]
-
-
-def next_by_table(table, i):
-    successors = []
-    for j in range(len(table)):
-        if table[j][0] == i + 1:
-            successors.append(table[j][1])
-    return successors
-
-
 # sortowanie BFS
-# macierz
-
-
+# matrix
 def create_in_degree_matrix(matrix):
     in_degree = []
     for i in range(len(matrix)):
@@ -132,12 +104,21 @@ def create_in_degree_matrix(matrix):
     return in_degree
 
 
+def next_by_matrix(matrix, i):
+    successors = []
+    for j in range(len(matrix[i])):
+        if matrix[i][j] == 1:
+            successors.append(j + 1)
+    return successors
+
+
 def sort_bfs_by_matrix(matrix):
     in_degree = create_in_degree_matrix(matrix)
     return sortowanieBFS(in_degree, next_by_matrix, matrix)
+# matrix end ---
 
 
-# lista
+# list
 def create_in_degree_list(list, n):
     in_degree = []
     flatten = sum([list[k][1] for k in range(len(list))], [])
@@ -154,9 +135,10 @@ def next_by_list(list, i):
 def sort_bfs_by_list(list, n):
     in_degree = create_in_degree_list(list, n)
     return sortowanieBFS(in_degree, next_by_list, list)
+# list end ---
 
 
-# tabela
+# table
 def create_in_degree_table(table, n):
     in_degree = []
     flatten = [table[k][1] for k in range(len(table))]
@@ -166,11 +148,21 @@ def create_in_degree_table(table, n):
     return in_degree
 
 
+def next_by_table(table, i):
+    successors = []
+    for j in range(len(table)):
+        if table[j][0] == i + 1:
+            successors.append(table[j][1])
+    return successors
+
+
 def sort_bfs_by_table(table, n):
     in_degree = create_in_degree_table(table, n)
     return sortowanieBFS(in_degree, next_by_table, table)
+# table end ---
 
 
+# main bfs_sort
 def lower_degree(successors, in_degree):
     for i in range(len(in_degree)):
         if in_degree[i][0] in successors:
@@ -188,3 +180,39 @@ def sortowanieBFS(in_degree, find_next, data):
                 successors = find_next(data, i)
                 in_degree = lower_degree(successors, in_degree)
     return " -> ".join(list(map(str, result)))
+
+
+# sortowanie DFS -------------
+def dfs_sort_matrix(matrix):
+    return sortowanieDFS(next_by_matrix, matrix, len(matrix))
+
+
+def dfs_sort_list(list, n):
+    return sortowanieDFS(next_by_list, list, n)
+
+
+def dfs_sort_table(table, n):
+    return sortowanieDFS(next_by_table, table, n)
+
+
+def dfs_sort(v, szare, result, find_next, data):
+    if v in result:
+        return result, szare
+    szare.append(v)
+    successors = find_next(data, v - 1)
+    for el in successors:
+        result, szare = dfs_sort(el, szare, result, find_next, data)
+        if el not in result:
+            result.append(el)
+    return result, szare
+
+
+def sortowanieDFS(find_next, data, nr_of_vertexes):
+    result = []
+    szare = []
+    n = nr_of_vertexes
+    for v in range(1, n + 1):
+        if v not in result:
+            result, szare = dfs_sort(v, szare, result, find_next, data)
+            result.append(v)
+    return " -> ".join(list(map(str, result[::-1])))

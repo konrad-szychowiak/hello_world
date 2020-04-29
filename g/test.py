@@ -7,7 +7,7 @@ from ggen import *
 
 TESTS = 10
 
-print("n;przegladanie_dfs;przegladanie_bfs;sort_bfs_by_matrix;sort_bfs_by_list;sort_bfs_by_table;___;___;___;")
+print("n;przegladanie_dfs;przegladanie_bfs;dfs_sort_matrix;dfs_sort_list;dfs_sort_table;")
 
 for _size in [100 * (i + 1) for i in range(10)]:
     matrix = Generator(_size).matrix
@@ -37,7 +37,7 @@ for _size in [100 * (i + 1) for i in range(10)]:
     _record = []
     for i in range(TESTS):
         start = time()
-        sort_bfs_by_matrix(matrix)
+        dfs_sort_matrix(matrix)
         end = time()
         _record.append(end - start)
     print(f'{sum(_record)/10};', end='')
@@ -46,7 +46,7 @@ for _size in [100 * (i + 1) for i in range(10)]:
     _record = []
     for i in range(TESTS):
         start = time()
-        sort_bfs_by_list(successors_list, len(matrix))
+        dfs_sort_list(successors_list, len(matrix))
         end = time()
         _record.append(end - start)
     print(f'{sum(_record)/10};', end='')
@@ -55,7 +55,7 @@ for _size in [100 * (i + 1) for i in range(10)]:
     _record = []
     for i in range(TESTS):
         start = time()
-        sort_bfs_by_table(edge_table, len(matrix))
+        dfs_sort_table(edge_table, len(matrix))
         end = time()
         _record.append(end - start)
     print(f'{sum(_record)/10};', end='')
