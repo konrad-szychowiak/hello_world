@@ -23,7 +23,6 @@ def cycle(graph, current, start, visited, path, counter):
         if not visited[next]:
             if cycle(graph, next, start, visited, path, counter):
                 path.append(current)
-                # print(path[::-1])
                 return True
     visited[current] = False
     counter -= 1

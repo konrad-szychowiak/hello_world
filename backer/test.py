@@ -4,7 +4,7 @@ from time import time
 from .ggen import Generator
 from .hamilton import hamilton
 
-teda = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50]
+teda = [(i + 1) * 2 + 18 for i in range(10)]
 
 print("Hamilton30", file=stderr)
 for i in teda:
