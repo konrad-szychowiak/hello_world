@@ -4,4 +4,5 @@ python:
   - "3.7"
   - "3.8"
 script:
-  - travis_wait 30 python -m backer.test >/dev/null
+  - python main.py 2> times
+  - cat times | tr '.' ','
