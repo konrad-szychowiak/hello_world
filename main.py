@@ -1,5 +1,5 @@
 from time import time
-from system import stderr
+from sys import stderr
 from rygg.classes import *
 from rygg.dynamic import *
 from rygg.heuristic import *
