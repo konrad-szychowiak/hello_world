@@ -74,14 +74,14 @@ if __name__ == '__main__':
     start = time()
     brute_force(capacity, itemsNum, itemsLib)
     end = time()
-    print("\nDla 100_30: ", end - start, file=stderr)
+    print("\nDla 100_30: ", end - start)
 
     start = time()
     brute_force(capacity5, itemsNum5, itemsLib5)
     end = time()
-    print("\nDla 200_30: ", end - start, file=stderr)
+    print("\nDla 200_30: ", end - start)
 
     start = time()
     brute_force(capacity6, itemsNum6, itemsLib6)
     end = time()
-    print("\nDla 300_30: ", end - start, file=stderr)
+    print("\nDla 300_30: ", end - start)
